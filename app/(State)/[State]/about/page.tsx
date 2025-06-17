@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { headers } from "next/headers";
-import { BiMailSend, BiSolidPhone, BiSolidTime } from "react-icons/bi";
-import { BsBookmarkStarFill, BsFillPatchCheckFill } from "react-icons/bs";
 import { FaCrown } from "react-icons/fa6";
 import Banner from "@/app/components/Home/Banner";
 import contentData from "@/components/Content/about.json";

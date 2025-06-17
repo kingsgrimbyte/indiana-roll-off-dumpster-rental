@@ -11,7 +11,7 @@ const Navbar = () => {
   const handleNav = () => {
     setNav(!nav);
   };
-  const navLink =["Home", "Locations", "Services", "About","Blogs", "Contact"] 
+  const navLinks=["Home", "Locations", "Services", "About", "Blogs", "Contact"]
   return (
     <>
       <nav className=" sticky   top-0 z-[999] flex h-[5rem]  w-screen items-center justify-center border-y-2 bg-white px-4 md:w-full md:px-0">
@@ -31,7 +31,7 @@ const Navbar = () => {
               </Link>
             </div>
             <ul className=" mr-6 mt-0 hidden   flex-row items-center justify-around space-x-8 text-lg font-medium md:flex ">
-              {navLink.map(
+              {navLinks.map(
                 (item) => (
                   <li key={item}>
                     <Link
@@ -98,7 +98,7 @@ const Navbar = () => {
             <div className="">
               {/* <div className="text-xl font-bold ">Menu</div> */}
               <ul className="relative mt-5 flex flex-col gap-6 text-4xl font-semibold ">
-                {navLink.map(
+                {navLinks.map(
                   (item) => (
                     <li key={item}>
                       <Link

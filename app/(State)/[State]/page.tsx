@@ -11,10 +11,9 @@ import AreaWeServe from "@/app/components/Widgets/AreaWeServe";
 import Affordable from "@/app/components/Home/Affordable";
 import ProcessWidget from "@/app/components/Widgets/ProcessWidget";
 import NavbarState from "@/app/components/State/NavbarState";
-import { headers } from "next/headers";
-import PortaPottyCalculator from "@/app/components/Widgets/Calculator";
 import Link from "next/link";
 import ZipAndNeighAccordian from "@/app/components/Home/ZipAndNeighAccordian";
+import Types from "@/app/components/Widgets/Types";
 // import Service from "@/app/Components/Service";
 
 interface SubdomainPageProps {
@@ -257,6 +256,7 @@ export default function SubdomainPage({ params }: SubdomainPageProps) {
         {/* Service */}
         <div className="mt-14 md:mt-20">
           <Service value={State} />
+          <Types value={`${ContentData?.name }, ${abbrevations.toUpperCase()}`}/>
         </div>
         {/* Service */}
         {/* Needs */}
@@ -414,7 +414,6 @@ export default function SubdomainPage({ params }: SubdomainPageProps) {
         ) : null}
         {/* Season Section */}
         <ProcessWidget />
-        <PortaPottyCalculator/>
         {/* Cta */}
         <div className="mt-14 md:mt-28">
           <HourCta />

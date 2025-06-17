@@ -25,7 +25,7 @@ export function generateMetadata({ params }: { params: { services: string } }) {
     description: serviceData.description?.split("[location]").join(Data?.name || ContactInfo.location)
     ?.split("[phone]").join(ContactInfo.No),
     alternates: {
-      canonical: `https://${Data.slug}.${ContactInfo.host}/services/${params.services}/`,
+      canonical: `https://${Data.slug}.${ContactInfo.host}/types/${params.services}/`,
     },
   };
 }

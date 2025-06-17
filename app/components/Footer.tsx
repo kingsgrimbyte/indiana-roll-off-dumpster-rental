@@ -37,6 +37,9 @@ const address = subdomainData && "address" in subdomainData ? (subdomainData as 
                 Our Company
               </div>
               <div className="mt-6 flex  flex-col gap-2">
+                <Link href="/types">
+                  <p className="">Types of Dumpsters </p>
+                </Link>
                 <Link href="/about">
                   <p className="">About </p>
                 </Link>

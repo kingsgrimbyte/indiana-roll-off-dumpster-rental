@@ -12,7 +12,7 @@ const Banner = ({
 }: {
   image?: string;
   header?: string;
-  p1?: string;
+  p1: string;
   h1: string;
 }) => {
   return (

@@ -29,7 +29,7 @@ export default function RootLayout({
       </head>
       <GoogleAnalytics gaId={ContactInfo.googleAnalytics} />
       {/* <GoogleTagManager gtmId="" /> */}
-      <body className={`w-full ${inter.className}`}>
+      <body className={`w-full max-w-screen-2xl mx-auto ${inter.className}`}>
         <div className="bg-white">
           {children}
         </div>

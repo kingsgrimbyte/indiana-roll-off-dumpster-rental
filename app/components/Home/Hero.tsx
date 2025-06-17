@@ -13,7 +13,7 @@ import ReviewWidget from "../Widgets/ReviewWidget";
 import Navbar from "../Navbar";
 import ContactInfo from "@/components/Content/ContactInfo.json";
 import Link from "next/link";
-import PortaPottyCalculator from "../Widgets/Calculator";
+import Types from "../Widgets/Types";
 
 const Hero = () => {
   const cityData: any = content;
@@ -28,8 +28,11 @@ const Hero = () => {
             h1={homeData.h1Banner}
             image={homeData.bannerImage}
             header={homeData.bannerQuote}
-            p1={`${homeData?.metaDescription?.split("[location]").join( ContactInfo.location)
-                        ?.split("[phone]").join(ContactInfo.No)}.`}
+            p1={`${homeData?.metaDescription
+              ?.split("[location]")
+              .join(ContactInfo.location)
+              ?.split("[phone]")
+              .join(ContactInfo.No)}.`}
           />
           {/* poster */}
           {/* Section 1 */}
@@ -60,6 +63,7 @@ const Hero = () => {
           {/* Section 1 */}
           {/* TYPES */}
           <Service />
+          <Types/>
           {/* TYPES*/}
           <Affordable />
           {/* Section 4 */}
@@ -92,10 +96,9 @@ const Hero = () => {
             </div>
           </div>
           {/* Section 1 */}
-          <PortaPottyCalculator/>
           {/* Area we Serve */}
           <div className="mx-auto mt-14 max-w-[95rem] md:mt-20">
-            <div className="mt-10 flex md:h-96 rounded-xl  bg-white  shadow-2xl md:mb-10">
+            <div className="mt-10 flex rounded-xl bg-white  shadow-2xl  md:mb-10 md:h-96">
               <div className="md:w-[87%]">
                 <div className="mt-4 p-1 text-center text-2xl font-bold text-main">
                   We Proudly Serve{" "}
@@ -104,7 +107,7 @@ const Hero = () => {
                 <div className="mx-6 mt-4 flex h-fit w-auto flex-wrap items-center justify-center gap-4 md:mx-10">
                   {slugs
                     .sort()
-                    .slice(0, 15)
+                    .slice(0, 21)
                     .map((City: any, index: number) => {
                       return (
                         <div className="" key={index}>
