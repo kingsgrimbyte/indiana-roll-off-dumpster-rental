@@ -1,73 +1,41 @@
-import { MetadataRoute } from 'next'
-//  import CityData1 from "@/public/City.json";
- import contentData from "@/components/Content/ContactInfo.json"
+import { NextResponse } from 'next/server';
+import contentData from "@/components/Content/ContactInfo.json";
 import data from "@/components/Content/subDomainUrlContent.json";
 
+export async function GET() {
+  const BaseUrl = contentData.baseUrl;
+  const SubDomain = Object.keys(data);
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const BaseUrl = contentData.baseUrl
-  // const CityData: any = CityData1;
-  const SubDomain:any = Object.keys(data)
-  // const StateUrl: any = State.map((location: { slug: any }) => ({
-  //   url: `/${location.slug.split(" ").join("-").toLowerCase()}`,
-  //   lastModified: new Date(),
-  //   changeFrequency: "weekly",
-  //   priority: 0.9,
-  // }));
+  const urls = [
+    `${contentData.baseUrl}`,
+    `${contentData.baseUrl}locations`,
+    `${contentData.baseUrl}services`,
+    `${contentData.baseUrl}about`,
+    `${contentData.baseUrl}blogs`,
+    `${contentData.baseUrl}contact`,
+    `${contentData.baseUrl}subdomains/sitemap.xml`,
+    `${contentData.baseUrl}blogs/sitemap.xml`,
+    ...SubDomain.map((location: any) => `https://${location}.${contentData.host}`)
+  ];
 
-  // const CityUrl:any = Object.keys(CityData).flatMap((state) => {
-  //   return CityData[state].map((city: { slug: string; }) => ({
-  //     url: `/${state.toLowerCase()}/${city.slug.split(" ").join("-").toLowerCase()}`,
-  //     lastModified: new Date(),
-  //     changeFrequency: "weekly",
-  //     priority: 0.9,
-  //   }));
-  // });
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls
+  .map(
+    (url) => `
+  <url>
+    <loc>${url}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`
+  )
+  .join('')}
+</urlset>`;
 
-  
-  const SubDomainURL = SubDomain.map((location :any) => ({
-    url: `https://${location}.${contentData.host}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 1,
-  }));
-  return [
-    {
-      url: `${contentData.baseUrl}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
+  return new NextResponse(xml, {
+    headers: {
+      'Content-Type': 'application/xml',
     },
-    {
-      url: `${contentData.baseUrl}locations`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${contentData.baseUrl}services`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${contentData.baseUrl}about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${contentData.baseUrl}contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${contentData.baseUrl}subdomains/sitemap.xml`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-   
-  ]
+  });
 }
