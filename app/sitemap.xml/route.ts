@@ -1,3 +1,4 @@
+// app/sitemap.xml/route.ts
 import { NextResponse } from 'next/server';
 import contentData from "@/components/Content/ContactInfo.json";
 import data from "@/components/Content/subDomainUrlContent.json";
